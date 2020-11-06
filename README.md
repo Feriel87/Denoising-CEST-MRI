@@ -28,6 +28,10 @@ psnr_original.m:       Function to calculate the PSNR index.
 ssim_original.m:       Function to calculate the SSIM index.
 BM3D Filter :          Folder with BM3D package.
 NLmCED_Filter:         Folder with NLmCED package.
+datase_1:              Sythetic dataset #1.
+invitro_1:             In-vitro phantom #1.
+invivo_1:              In-vivo data #1.
+
 
 ### Instructions to download additional data  ###
 To test the additional synthetic dataset (#2, #3, #4, #5 and #6) and the in-vitro phantom #2:
