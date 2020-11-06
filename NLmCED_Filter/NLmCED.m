@@ -9,7 +9,6 @@ function DenoisedData = NLmCED(InputData,iter,rho,alpha,num)
 % Output: 
 %     DenoisedData: Final denoised 3D image 
 
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Copyright (c) 20xx-20xx   University of Al Manar Tunisia, ENIT and University of Turin (Unito), Italy
 % All rights reserved.
@@ -17,7 +16,6 @@ function DenoisedData = NLmCED(InputData,iter,rho,alpha,num)
 %
 % AUTHORS:
 % Feriel Romdhane - ferielromdhane@yahoo.fr
-% Dario Longo - dario.longo@unito.it
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 
 [Y,X,Z]=size(InputData);
@@ -45,7 +43,7 @@ for i=1:iter
 
 %% Constants which are needed with CED eigenmode
 [sig] = RicianSTD_NLMCED(double(u)); 
-h=beta*sig;
+h = beta*sig;
 %% create the gradiant 
 usigma=imgaussian(u,sig,4*sig);
 Gx=derivatives(usigma,'x');

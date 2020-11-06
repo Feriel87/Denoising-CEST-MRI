@@ -108,16 +108,14 @@
  
 %% Example denoising 1% of rician noise 
 load('dataset_1.mat')
-[m,n,p]    = size(Data);
+[m,n,p]    = size(Data); % Size of the original data
 
 %****** Applying NLmCED filter for denoising 1% of rician noise ******%
 %%% rho and alpha are the optimised parameters for the CEST data (synthetic, invitro and invivo); 
 %%%  If you are using another modality you can chage these parameter to optimise the denoising process 
 rho = 0.001;
 alpha = 0.001;
-wind=1; 
 denoisedNLmCED = NLmCED(noisyimage1,iter1,rho, alpha,wind);
-
 
 %****** Applying BM3D filter for denoising 1% of rician noise ******%
 denoisedBM3D = zeros(m,n,p);
@@ -146,40 +144,45 @@ end
 
 
 %% ******************************* Example of calculation of CEST Contrast and pH ******************************** %%
-%% Example calculation of CEST Contrast and pH for free noise data with only Water+Iopamidol (dataset_1.mat) and the denoise dataset with NLmCED method
-% Original data
+% Example calculation of CEST Contrast and pH for free noise data 
+% with only Water+Iopamidol (dataset_1.mat) and the denoise dataset with NLmCED method
+% %Original data
 [ST1_Org, ST2_Org] = contrastCEST(Data,x); 
 pH_Org = pH_SyntheticDataset(ST1_Org, ST2_Org); 
-% Denoised data
+% %Denoised data
 [ST1_denoised, ST2_denoised] = contrastCEST(denoisedNLmCED,x); 
 pH_denoised = pH_SyntheticDataset(ST1_denoised, ST2_denoised); 
 
-%% calculate the PSNR index for ST1 (Contrast CEST at 4.2 ppm)
+% calculate the PSNR index for ST1 (Contrast CEST at 4.2 ppm)
 PSNR_ST1 = psnr_original(ST1_Org,ST1_denoised); 
 SSIM_ST1 = ssim_original(ST1_Org,ST1_denoised); 
 
-%% Example calculation of Contrast CEST and pH for free noise data with Only Water+Iopamidol (dataset_1.mat)
-[ST1_Org, ST2_Org] = contrastCEST(Data,x); 
-ST_Ratio = ST1_Org./ST2_Org; 
-pH_Org = pH_SyntheticDataset(ST1_Org, ST2_Org); 
-
-%% Example Calculation of DeltaST and pH for free noise data with Water+MT+Iopamidol (dataset_5.mat) 
+%% *************************************************************************************************************** %%
+% In order to test data with two sets (pre and post injection), please follow the example below for testing dataset5. 
+% % Example Calculation of DeltaST and pH for free noise data with Water+MT+Iopamidol (dataset_5.mat): 
+% load('dataset_5.mat')
+% [m,n,p] = size(Data_Pre); % Size of the original data 
+% %NLmCED Filter
+% denoisedNLmCED_pre = NLmCED(noisypre1,iter1,rho,alpha,wind);
+% denoisedNLmCED_post = NLmCED(noisypost1,iter1,rho,alpha,wind);
+% %DeltaST and pH calculation for Origianl data
 % [ST1_Org_Pre, ST2_Org_Pre] = contrastCEST(Data_Pre,x);  
 % [ST1_Org_Post, ST2_Org_Post] = contrastCEST(Data_Post,x); 
 % deltaST1_Org = ST1_Org_Post - ST1_Org_Pre; 
 % deltaST2_Org = ST2_Org_Post - ST2_Org_Pre;
-% deltaST_Ratio = deltaST1_Org./deltaST2_Org;
 % pH_Org = pH_SyntheticDataset(deltaST1_Org, deltaST2_Org); 
+% %DeltaST and pH calculation for denoised NLmCED
+% [ST1_den_Pre, ST2_den_Pre] = contrastCEST(denoisedNLmCED_pre,x);  
+% [ST1_den_Post, ST2_den_Post] = contrastCEST(denoisedNLmCED_post,x); 
+% deltaST1_nlmced = ST1_den_Post - ST1_den_Pre; 
+% deltaST2_nlmced = ST2_den_Post - ST2_den_Pre; 
+% pH_nlmced = pH_SyntheticDataset(deltaST1_nlmced, deltaST2_nlmced); 
+% % %PSNR and SSIM calculation
+% DeltaST1_psnrval = psnr_original(deltaST1_Org,deltaST1_nlmced); 
+% DeltaST1_ssImval = ssim_original(deltaST1_Org,deltaST1_nlmced); 
 
-%% Example Calculation of DeltaST and pH for invivo data (invivo_1.mat) 
-% [ST1_Org_Pre, ST2_Org_Pre] = contrastCEST(Data_Pre,x);  
-% [ST1_Org_Post, ST2_Org_Post] = contrastCEST(Data_Post,x); 
-% deltaST1_Org = ST1_Org_Post - ST1_Org_Pre; 
-% deltaST2_Org = ST2_Org_Post - ST2_Org_Pre;
-% deltaST_Ratio = deltaST1_Org./deltaST2_Org;
-% pH_Org = pH_SyntheticDataset(deltaST1_Org, deltaST2_Org); 
-
-%% Example Calculation of DeltaST and pH for Original invivo data (invivo_1.mat) 
+%% ****************************************************************************%
+% This an Example to calculate the DeltaST and pH for invivo data (invivo_1.mat) 
 % [ST1_Org_Pre, ST2_Org_Pre] = contrastCEST(Data_Pre,x);  
 % [ST1_Org_Post, ST2_Org_Post] = contrastCEST(Data_Post,x); 
 % deltaST1_Org = ST1_Org_Post - ST1_Org_Pre; 
