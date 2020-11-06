@@ -145,7 +145,7 @@ end
 
 %% ******************************* Example of calculation of CEST Contrast and pH ******************************** %%
 % Example calculation of CEST Contrast and pH for free noise data 
-% with only Water+Iopamidol (dataset_1.mat) and the denoise dataset with NLmCED method
+% with only Water+Iopamidol (dataset_1.mat) and for the denoised dataset with NLmCED method
 % %Original data
 [ST1_Org, ST2_Org] = contrastCEST(Data,x); 
 pH_Org = pH_SyntheticDataset(ST1_Org, ST2_Org); 
@@ -165,7 +165,7 @@ SSIM_ST1 = ssim_original(ST1_Org,ST1_denoised);
 % %NLmCED Filter
 % denoisedNLmCED_pre = NLmCED(noisypre1,iter1,rho,alpha,wind);
 % denoisedNLmCED_post = NLmCED(noisypost1,iter1,rho,alpha,wind);
-% %DeltaST and pH calculation for Origianl data
+% %DeltaST and pH calculation for Original data
 % [ST1_Org_Pre, ST2_Org_Pre] = contrastCEST(Data_Pre,x);  
 % [ST1_Org_Post, ST2_Org_Post] = contrastCEST(Data_Post,x); 
 % deltaST1_Org = ST1_Org_Post - ST1_Org_Pre; 
@@ -183,12 +183,18 @@ SSIM_ST1 = ssim_original(ST1_Org,ST1_denoised);
 
 %% ****************************************************************************%
 % This an Example to calculate the DeltaST and pH for invivo data (invivo_1.mat) 
+% %Original data
 % [ST1_Org_Pre, ST2_Org_Pre] = contrastCEST(Data_Pre,x);  
 % [ST1_Org_Post, ST2_Org_Post] = contrastCEST(Data_Post,x); 
 % deltaST1_Org = ST1_Org_Post - ST1_Org_Pre; 
 % deltaST2_Org = ST2_Org_Post - ST2_Org_Pre;
 % deltaST_Ratio = deltaST1_Org./deltaST2_Org;
 % pH_Org = pH_InVivo(deltaST1_Org, deltaST2_Org); 
-
-
+% %Denoised data
+% %DeltaST and pH calculation for denoised NLmCED
+% [ST1_den_Pre, ST2_den_Pre] = contrastCEST(denoisedNLmCED_pre,x);  
+% [ST1_den_Post, ST2_den_Post] = contrastCEST(denoisedNLmCED_post,x); 
+% deltaST1_nlmced = ST1_den_Post - ST1_den_Pre; 
+% deltaST2_nlmced = ST2_den_Post - ST2_den_Pre; 
+% pH_nlmced = pH_InVivo(deltaST1_nlmced, deltaST2_nlmced); 
 

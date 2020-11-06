@@ -42,7 +42,7 @@ out1 = zeros(Y,X,Z);
 for i=1:iter
 
 %% Constants which are needed with CED eigenmode
-[sig] = RicianSTD_NLMCED(double(u)); 
+[sig] = RicianSTD_NLMCED(double(u))
 h = beta*sig;
 %% create the gradiant 
 usigma=imgaussian(u,sig,4*sig);
