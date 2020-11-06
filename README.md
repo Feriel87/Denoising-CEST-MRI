@@ -26,7 +26,8 @@ pH_SyntheticDataset.m: Function to calculate the pH for the synthetic dataset.
 pH_InVivo.m:           Function to calculate the pH for the In Vivo data.
 psnr_original.m:       Function to calculate the PSNR index.
 ssim_original.m:       Function to calculate the SSIM index.
-
+BM3D Filter :          Folder with BM3D package.
+NLmCED_Filter:         Folder with NLmCED package.
 
 ### Instructions to download additional data  ###
 To test the additional synthetic dataset (#2, #3, #4, #5 and #6) and the in-vitro phantom #2:
