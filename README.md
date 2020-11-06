@@ -24,7 +24,9 @@ Demo_CEST_Denoising.m: Demo on how to use the denoising method and data.
 contrastCEST.m:        Function to calculate the CEST Contrast for iopamidol.
 pH_SyntheticDataset.m: Function to calculate the pH for the synthetic dataset.
 pH_InVivo.m:           Function to calculate the pH for the In Vivo data.
+psnr_original.m:       Function to calculate the PSNR index.
 ssim_original.m:       Function to calculate the SSIM index.
+
 
 ### Instructions to download additional data  ###
 To test the additional synthetic dataset (#2, #3, #4, #5 and #6) and the in-vitro phantom #2:
@@ -66,7 +68,7 @@ at 7 T," Magn Reson Med 2011;65(1):202-211.s
 
 ### Citation ###
 Cite the code: 
-[![DOI](https://zenodo.org/badge/304254305.svg)](https://zenodo.org/badge/latestdoi/304254305)
+
 
 ### Who do I talk to? ###
 If you have any comment, suggestion, or question, please do contact Feriel Romdhane at  ferielromdhane@yahoo.fr
