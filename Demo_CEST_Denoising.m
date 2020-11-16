@@ -160,45 +160,47 @@ SSIM_ST1 = ssim_original(ST1_Org,ST1_denoised);
 %% *************************************************************************************************************** %%
 % In order to test data with two sets (pre and post injection), please follow the example below for testing dataset5. 
 % % Example Calculation of DeltaST and pH for free noise data with Water+MT+Iopamidol (dataset_5.mat): 
-% load('dataset_5.mat')
-% [m,n,p] = size(Data_Pre); % Size of the original data 
-% %NLmCED Filter
-% denoisedNLmCED_pre = NLmCED(noisypre1,iter1,rho,alpha,wind);
-% denoisedNLmCED_post = NLmCED(noisypost1,iter1,rho,alpha,wind);
-% %DeltaST and pH calculation for Original data
-% [ST1_Org_Pre, ST2_Org_Pre] = contrastCEST(Data_Pre,x);  
-% [ST1_Org_Post, ST2_Org_Post] = contrastCEST(Data_Post,x); 
-% deltaST1_Org = ST1_Org_Post - ST1_Org_Pre; 
-% deltaST2_Org = ST2_Org_Post - ST2_Org_Pre;
-% pH_Org = pH_SyntheticDataset(deltaST1_Org, deltaST2_Org); 
-% %DeltaST and pH calculation for denoised NLmCED
-% [ST1_den_Pre, ST2_den_Pre] = contrastCEST(denoisedNLmCED_pre,x);  
-% [ST1_den_Post, ST2_den_Post] = contrastCEST(denoisedNLmCED_post,x); 
-% deltaST1_nlmced = ST1_den_Post - ST1_den_Pre; 
-% deltaST2_nlmced = ST2_den_Post - ST2_den_Pre; 
-% pH_nlmced = pH_SyntheticDataset(deltaST1_nlmced, deltaST2_nlmced); 
-% % %PSNR and SSIM calculation
-% DeltaST1_psnrval = psnr_original(deltaST1_Org,deltaST1_nlmced); 
-% DeltaST1_ssImval = ssim_original(deltaST1_Org,deltaST1_nlmced); 
+load('dataset_5.mat')
+% NLmCED Filter
+rho = 0.001;
+alpha = 0.001;
+denoisedNLmCED_pre = NLmCED(noisypre1,iter1,rho,alpha,wind);
+denoisedNLmCED_post = NLmCED(noisypost1,iter1,rho,alpha,wind);
+% DeltaST and pH calculation for Original data
+[ST1_Org_Pre, ST2_Org_Pre] = contrastCEST(Data_Pre,x);  
+[ST1_Org_Post, ST2_Org_Post] = contrastCEST(Data_Post,x); 
+deltaST1_Org = ST1_Org_Post - ST1_Org_Pre; 
+deltaST2_Org = ST2_Org_Post - ST2_Org_Pre;
+pH_Org = pH_SyntheticDataset(deltaST1_Org, deltaST2_Org); 
+% DeltaST and pH calculation for denoised NLmCED
+[ST1_den_Pre, ST2_den_Pre] = contrastCEST(denoisedNLmCED_pre,x);  
+[ST1_den_Post, ST2_den_Post] = contrastCEST(denoisedNLmCED_post,x); 
+deltaST1_nlmced = ST1_den_Post - ST1_den_Pre; 
+deltaST2_nlmced = ST2_den_Post - ST2_den_Pre; 
+pH_nlmced = pH_SyntheticDataset(deltaST1_nlmced, deltaST2_nlmced); 
+% PSNR and SSIM calculation
+DeltaST1_psnrval = psnr_original(deltaST1_Org,deltaST1_nlmced); 
+DeltaST1_ssImval = ssim_original(deltaST1_Org,deltaST1_nlmced); 
 
 %% ****************************************************************************%
 % This an Example to calculate the DeltaST and pH for invivo data (invivo_1.mat) 
-% %Original data
-% [ST1_Org_Pre, ST2_Org_Pre] = contrastCEST(Data_Pre,x);  
-% [ST1_Org_Post, ST2_Org_Post] = contrastCEST(Data_Post,x); 
-% deltaST1_Org = ST1_Org_Post - ST1_Org_Pre; 
-% deltaST2_Org = ST2_Org_Post - ST2_Org_Pre;
-% deltaST_Ratio = deltaST1_Org./deltaST2_Org;
-% pH_Org = pH_InVivo(deltaST1_Org, deltaST2_Org); 
-% %Denoised data using NLmCED method
-% rho = 0.001;
-% alpha = 0.001;
-% denoisedNLmCED_pre = NLmCED(Data_Pre,iter,rho, alpha);
-% denoisedNLmCED_post = NLmCED(Data_Post,iter,rho,alpha);
-% %DeltaST and pH calculation for denoised NLmCED
-% [ST1_den_Pre, ST2_den_Pre] = contrastCEST(denoisedNLmCED_pre,x);  
-% [ST1_den_Post, ST2_den_Post] = contrastCEST(denoisedNLmCED_post,x); 
-% deltaST1_nlmced = ST1_den_Post - ST1_den_Pre; 
-% deltaST2_nlmced = ST2_den_Post - ST2_den_Pre; 
-% pH_nlmced = pH_InVivo(deltaST1_nlmced, deltaST2_nlmced); 
+% Original data
+load('invivo_1.mat');
+[ST1_Org_Pre, ST2_Org_Pre] = contrastCEST(Data_Pre,x);  
+[ST1_Org_Post, ST2_Org_Post] = contrastCEST(Data_Post,x); 
+deltaST1_Org = ST1_Org_Post - ST1_Org_Pre; 
+deltaST2_Org = ST2_Org_Post - ST2_Org_Pre;
+deltaST_Ratio = deltaST1_Org./deltaST2_Org;
+pH_Org = pH_InVivo(deltaST1_Org, deltaST2_Org); 
+% Denoised data using NLmCED method
+rho = 0.001;
+alpha = 0.001;
+denoisedNLmCED_pre = NLmCED(Data_Pre,iter,rho, alpha);
+denoisedNLmCED_post = NLmCED(Data_Post,iter,rho,alpha);
+% DeltaST and pH calculation for denoised NLmCED
+[ST1_den_Pre, ST2_den_Pre] = contrastCEST(denoisedNLmCED_pre,x);  
+[ST1_den_Post, ST2_den_Post] = contrastCEST(denoisedNLmCED_post,x); 
+deltaST1_nlmced = ST1_den_Post - ST1_den_Pre; 
+deltaST2_nlmced = ST2_den_Post - ST2_den_Pre; 
+pH_nlmced = pH_InVivo(deltaST1_nlmced, deltaST2_nlmced); 
 
