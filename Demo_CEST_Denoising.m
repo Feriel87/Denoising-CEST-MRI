@@ -195,8 +195,9 @@ pH_Org = pH_InVivo(deltaST1_Org, deltaST2_Org);
 % Denoised data using NLmCED method
 rho = 0.001;
 alpha = 0.001;
-denoisedNLmCED_pre = NLmCED(Data_Pre,iter,rho, alpha);
-denoisedNLmCED_post = NLmCED(Data_Post,iter,rho,alpha);
+wind =2; 
+denoisedNLmCED_pre = NLmCED(Data_Pre,iter,rho, alpha,wind);
+denoisedNLmCED_post = NLmCED(Data_Post,iter,rho,alpha,wind);
 % DeltaST and pH calculation for denoised NLmCED
 [ST1_den_Pre, ST2_den_Pre] = contrastCEST(denoisedNLmCED_pre,x);  
 [ST1_den_Post, ST2_den_Post] = contrastCEST(denoisedNLmCED_post,x); 
