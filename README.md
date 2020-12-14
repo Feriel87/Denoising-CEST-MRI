@@ -5,7 +5,7 @@
   
   Several Z-spectra datasets have been provided to test the scripts, including:
   
-  6 synthetic datasets by simulating Iopamidol at several concentrations, pH values and amplitudes of the semisolid component including ground-truth data and noisy data after    applying rician noise at several noise levels 
+  3 synthetic datasets by simulating Iopamidol at several concentrations, pH values and amplitudes of the semisolid component including ground-truth data and noisy data after    applying rician noise at several noise levels 
   
   2 in-vitro phantom with Iopamidol at several pH values and concentrations
   
@@ -34,7 +34,7 @@ invivo_1:              In-vivo data #1.
 
 
 ### Instructions to download additional data  ###
-To test the additional synthetic dataset (#2, #3, #4, #5 and #6) and the in-vitro phantom #2:
+To test the additional synthetic dataset (#3) and the in-vitro phantom #2:
 
 1) Access to the XNAT platform of the Molecular Imaging Center of the University of Torino: http://cim-xnat.unito.it with the following credentials:
 username: CESTMRI
@@ -73,6 +73,7 @@ at 7 T," Magn Reson Med 2011;65(1):202-211.s
 
 ### Citation ###
 Cite the code: 
+[![DOI](https://zenodo.org/badge/310314628.svg)](https://zenodo.org/badge/latestdoi/310314628)
 
 
 ### Who do I talk to? ###
