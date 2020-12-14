@@ -34,7 +34,7 @@ invivo_1:              In-vivo data #1.
 
 
 ### Instructions to download additional data  ###
-To test the additional synthetic dataset (#3) and the in-vitro phantom #2:
+To test the additional synthetic dataset #3 and the in-vitro phantom #2:
 
 1) Access to the XNAT platform of the Molecular Imaging Center of the University of Torino: http://cim-xnat.unito.it with the following credentials:
 username: CESTMRI
