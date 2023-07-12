@@ -75,6 +75,7 @@ at 7 T," Magn Reson Med 2011;65(1):202-211.s
 Cite the code: 
 [![DOI](https://zenodo.org/badge/310314628.svg)](https://zenodo.org/badge/latestdoi/310314628)
 
-
+Cite the paper: 
+[![DOI](https://doi.org/10.1002/mrm.28676)
 ### Who do I talk to? ###
 If you have any comment, suggestion, or question, please do contact Feriel Romdhane at  ferielromdhane@yahoo.fr
